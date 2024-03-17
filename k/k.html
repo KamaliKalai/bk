@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Welcome to Book Review</title>
+    <style>
+        body {
+            background-color: #ffd1dc; /* Baby pink background */
+            background-image: url('book1.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #007d5e;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007d5e;
+            color: #ffffff;
+            cursor: pointer;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005d44;
+        }
+
+        a button {
+            background-color: #ffffff;
+            color: #007d5e;
+            border: 1px solid #007d5e;
+        }
+
+        a button:hover {
+            background-color: #007d5e;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="listname.html" method="get">
+        <input type="hidden" id="firstName" name="firstName" value="">
+        <input type="hidden" id="lastName" name="lastName" value="">
+        <button type="submit">List the Name</button>
+    </form>
+    <form action="index.html" method="get">
+        <button type="submit">Go to Book Review Page</button>
+    </form><br>
+	<br><br>
+    <a href="firstpage.html"><button type="button">Back</button></a>
+
+    <script>
+        // Check if there are stored values in local storage
+        const storedFirstName = localStorage.getItem('storedFirstName');
+        const storedLastName = localStorage.getItem('storedLastName');
+
+        if (storedFirstName && storedLastName) {
+            // If values are found, fill the hidden fields with these values
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+
+            firstNameInput.value = storedFirstName;
+            lastNameInput.value = storedLastName;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            background-color: #e6e6e6; /* Light gray background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .welcome-heading {
+            background-color: #007d5e; /* Dark green background */
+            color: #ffffff; /* White text color */
+            border-radius: 1px;
+            padding: 1px 2px; /* Adjusted padding */
+            margin-bottom: 10px; /* Adjusted margin */
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333333;
+            font-size: 16px;
+        }
+
+        label[for="firstName"],
+        label[for="lastName"] {
+            color: #000000; /* Dark black color */
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #99a3a4; /* Light gray border */
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007d5e; /* Dark green button */
+            color: #ffffff;
+            cursor: pointer;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005d44; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-heading">
+        <h1>Welcome</h1>
+    </div>
+    <br><br><br>
+    <form id="submitForm" action="k.html" method="get">
+        <label for="firstName">Enter your first name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <br><br>
+        <label for="lastName">Enter your last name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        // JavaScript to store the values in local storage
+        const submitForm = document.getElementById('submitForm');
+        submitForm.addEventListener('submit', function() {
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+
+            localStorage.setItem('storedFirstName', firstNameInput.value);
+            localStorage.setItem('storedLastName', lastNameInput.value);
+        });
+    </script>
+</body>
+</html>

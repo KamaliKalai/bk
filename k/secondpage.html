@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Book Type Selection</title>
+<body style="background-color:pink"> 
+ <style>
+ body {
+background-color: pink;
+font-family: 'Arial', sans-serif;
+}
+h1 {
+color: #000033; 
+}
+label {
+font-size: 18px;
+color: #000033; /* Teal label color */
+}
+select {
+width: 200px; /* Set a fixed width for the dropdown */
+padding: 8px;
+font-size: 16px;
+}
+button {
+background-color: #4CAF50; /* Green button color */
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+border: none;
+margin-right: 10px;
+}
+button:hover {
+background-color: #45a049; /* Darker green color on hover */
+}
+#bookInfo {
+display: none;
+margin-top: 20px;
+padding: 10px;
+border: 2px solid #008080; /* Teal border color */
+}
+#bookInfo img {
+max-width: 100%;
+height: auto;
+border: 1px solid #333;
+}
+
+video {
+width: 15%;
+height: auto;
+border: 6px solid #333; /* Border style, color, and width */
+}
+</style>
+<script>
+function populateBookTypes() {
+var category = new URLSearchParams(window.location.search).get('category');
+var bookTypeSelect = document.getElementById("bookType");
+bookTypeSelect.innerHTML = ""; // Clear existing options
+switch (category) {
+case "Thriller":
+addOption(bookTypeSelect, "The Woman in White");
+addOption(bookTypeSelect, "The Turn of the Screw");
+addOption(bookTypeSelect, "AManLayDead");
+break;
+case "Horror":
+addOption(bookTypeSelect, "A House Of Ghosts");
+addOption(bookTypeSelect, "The Folly");
+addOption(bookTypeSelect, "The Slime");
+break;
+case "Cookbooks":
+addOption(bookTypeSelect, "The Smitten Kitchen Cookbook");
+addOption(bookTypeSelect, "How to Cook Everything-Simple Recipes for Great Food");
+addOption(bookTypeSelect, "Plenty");
+addOption(bookTypeSelect, "Jerusalem-A Cookbook");
+addOption(bookTypeSelect, "The Moosewood Cookbook-Recipes from Moosewood Restaurant, Ithaca, New York");
+break;
+case "History":
+addOption(bookTypeSelect, "The Communist Manifesto");
+addOption(bookTypeSelect, "Democracy-A Life ");
+addOption(bookTypeSelect, "Destiny Disrupted-A History of the World Through Islamic Eyes");
+addOption(bookTypeSelect, "Salt-A World History");
+addOption(bookTypeSelect, "Guns, Germs, and Steel-The Fates of Human Societies");
+break;
+case "Science":
+addOption(bookTypeSelect, "A Short History of Nearly Everything");
+addOption(bookTypeSelect, "A Brief History of Time");
+addOption(bookTypeSelect, "Cosmos");
+addOption(bookTypeSelect, "The Selfish Gene");
+addOption(bookTypeSelect, "The Origin of Species");
+addOption(bookTypeSelect, "Taking Flight-The Evolutionary Story of Life on the Wing");
+addOption(bookTypeSelect, "Nuts and Bolts-Seven Small Inventions That Changed the World in a Big Way");
+break;
+case "Self-Help":
+addOption(bookTypeSelect, "Atomic Habits");
+addOption(bookTypeSelect, "How to Win Friends and Influence People");
+addOption(bookTypeSelect, "The Power of Habit- Why We Do What We Do in Life and Business");
+addOption(bookTypeSelect, "Thinking, Fast and Slow");
+addOption(bookTypeSelect, "The Secret");
+break;
+case "Business and Finance":
+addOption(bookTypeSelect, "Rich Dad, Poor Dad");
+addOption(bookTypeSelect, "The Intelligent Investor");
+addOption(bookTypeSelect, "The Alchemy of Finance ");
+addOption(bookTypeSelect, "Leadership");
+addOption(bookTypeSelect, "Economics");
+break;
+case "Travel":
+addOption(bookTypeSelect, "Arabian Sands (Penguin Classics)");
+addOption(bookTypeSelect, "Among the Cities (Oxford Paperbacks)");
+addOption(bookTypeSelect, "The Bird Man and the Lap Dancer");
+break;
+case "Biography and Autobiography":
+addOption(bookTypeSelect, "Charles III");
+addOption(bookTypeSelect, "Queen of Our Times");
+addOption(bookTypeSelect, "Finding Hildasay");
+addOption(bookTypeSelect, "A Girlhood");
+addOption(bookTypeSelect, "Butterfly");
+addOption(bookTypeSelect, "The Happiest Man on Earth");
+addOption(bookTypeSelect, "Life Lessons");
+break;
+case "Motivational": // Assuming this should be another category, not "Self-Help" again
+addOption(bookTypeSelect, "The 7 Habits of Highly Effective People by Stephen Covey");
+addOption(bookTypeSelect, "How to Win Friends and Influence People by Dale Carnegie");
+addOption(bookTypeSelect, "Atomic Habits by James Clear");
+addOption(bookTypeSelect, "Mindset: The New Psychology of Success by Carol S. Dweck");
+addOption(bookTypeSelect, "You Are a Badass by Jen Sincero");
+break;
+case "Crime":
+addOption(bookTypeSelect, "Garnethill");
+addOption(bookTypeSelect, "The Dry");
+addOption(bookTypeSelect, "61 Hours");
+addOption(bookTypeSelect, "Run Away");
+addOption(bookTypeSelect, "Then She Was Gone");
+addOption(bookTypeSelect, "The Troubled Man");
+addOption(bookTypeSelect, "The Raging Storm");
+addOption(bookTypeSelect, "Bright Young Women");
+break;
+case "Children's Books":
+addOption(bookTypeSelect, "The Ugly Duckling");
+addOption(bookTypeSelect, " Owl Babies");
+addOption(bookTypeSelect, "Geraldine ");
+addOption(bookTypeSelect, "Where the Wild Things Are");
+addOption(bookTypeSelect, "Sharko and Hippo");
+break;
+case "Story Books":
+addOption(bookTypeSelect, "Grumpy Bird");
+addOption(bookTypeSelect, " My Friend Bear");
+addOption(bookTypeSelect, "The Mitten");
+addOption(bookTypeSelect, "Peter Pan");
+addOption(bookTypeSelect, "The Jungle Book");
+break;
+case "Philosophy":
+addOption(bookTypeSelect, "Milton Friedman-The Last Conservative");
+addOption(bookTypeSelect, "Collapse Feminism-The Online Battle for Feminism's Future");
+addOption(bookTypeSelect, "Greenlights");
+addOption(bookTypeSelect, "The Boy, the Mole, the Fox and the Horse");
+addOption(bookTypeSelect, "The Stranger in the Lifeboat");
+break;
+default:
+break;
+}}
+function addOption(select, value) {
+var option = document.createElement("option");
+option.value = value;
+option.text = value;
+select.add(option);
+}
+function goBack() {
+window.location.href = "index.html";
+}
+function submitForm() {
+var bookTypeSelect = document.getElementById("bookType");
+var selectedBookType = bookTypeSelect.value.trim().toLowerCase();
+if (selectedBookType) {
+var pageName;
+switch (selectedBookType) {
+case "supernatural":
+pageName = "supernatural.html";
+break;
+case "psychological":
+pageName = "psychological.html";
+break;
+case "horror book 1":
+pageName = "horror_book_1.html";
+break;
+case "horror book 2":
+pageName = "horror_book_2.html";
+break;
+case "horror book 3":
+pageName = "horror_book_3.html";
+break;
+case "democracy-a life":
+pageName = "Democracy-A Life.html";
+break;
+case "where the wild things are":
+pageName = "Where the Wild Things Are.html";
+break;
+default:
+// Handle other cases or provide a generic fallback
+pageName = selectedBookType + ".html";
+break;
+ }
+ window.location.href = pageName;
+ } else {
+ alert("Please select a book type before submitting.");
+ }
+}
+</script>
+</head>
+<body onload="populateBookTypes()">
+<center>
+<h1>Book Type Selection</h1>
+<br><br> 
+<video width="320" height="240" controls>
+<source src="bvideo.mp4" type="video/mp4">
+<source src="bvideo.ogg" type="video/ogg">
+</video>
+<br><br> 
+</center>
+<form id="bookTypeForm" method="get">
+<label for="bookType">Select the Type of Book:</label>
+<select name="bookType" id="bookType">
+</select>
+<br><br>
+<br><br>
+<button type="button" onclick="goBack()">Back</button>
+<button type="button" onclick="submitForm()">Submit</button>
+<br><br>
+<br><br>
+<br>
+</form>
+</body>
+</html>
